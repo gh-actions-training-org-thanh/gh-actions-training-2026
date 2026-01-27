@@ -46,7 +46,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Greeting step (expectation: Hello Thanh)"
-        run: echo $GREETING $MY_NAME
+        run: |
+          echo $GREETING $MY_NAME
+          echo "${{env.GREETING}} ${{env.MY_NAME}}"
+        if: ${{ env.MY_NAME == 'Thanh' }}
   Greeting2:
     runs-on: ubuntu-latest
     env:
