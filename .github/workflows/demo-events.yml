@@ -21,12 +21,15 @@ on:
   workflow_dispatch:
     inputs:
       yourName:
+        description: Whats your name?
         required: true
         default: My friend
       areYouFeelingGood:
+        description: Are you feeling good?
         required: true
         type: boolean
       howDoYouFindGithubActions:
+        description: How do you find GitHub Actions?
         required: false
         type: choice
         options:
