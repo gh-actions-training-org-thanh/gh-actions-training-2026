@@ -1,0 +1,17 @@
+name: Demo trigger events
+
+on:
+  # Webhook events
+  push:
+    branches:
+      - main
+      - feat/*
+  # Schedule events
+  # Manual events
+
+jobs:
+  Greeting:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Greeting step
+        run: echo Hello world!
