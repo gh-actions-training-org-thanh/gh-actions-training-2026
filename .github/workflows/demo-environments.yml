@@ -9,6 +9,26 @@ on:
           - Test
           - Staging
           - Production
+      var10:
+        type: string
+      var11:
+        type: string
+      var12:
+        type: string
+      var13:
+        type: string
+      var14:
+        type: string
+      var15:
+        type: string
+      var16:
+        type: string
+      var19:
+        type: string
+      var17:
+        type: string
+      var18:
+        type: string
 
 jobs:
   build:
