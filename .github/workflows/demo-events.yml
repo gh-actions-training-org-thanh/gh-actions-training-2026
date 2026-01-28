@@ -51,7 +51,7 @@ jobs:
           echo "${{env.GREETING}} ${{env.MY_NAME}}"
         if: ${{ env.MY_NAME == 'Thanh' }}
   Greeting2:
-    if: ${{ env.MY_NAME != 'Thanh' }}
+    if: github.env.MY_NAME != 'Thanh'
     runs-on: ubuntu-latest
     env:
       GREETING: Good morning
