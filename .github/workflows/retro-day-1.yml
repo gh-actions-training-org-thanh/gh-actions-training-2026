@@ -1,0 +1,55 @@
+# create a workflow with a name of your choice
+# it should be triggered whenever there is a push on the main branch
+# it should be triggered manually too
+
+# define 2 environment variables: VAR1 and VAR2 on the workflow level
+# VAR1 is boolean
+# VAR2 is text
+
+# it should have 2 jobs
+# 1st job should contains 2 steps
+# step 1: 
+#  - should be executed only if VAR1 is true
+#  - echo the VAR2
+# step 2:
+#  - echo your name
+
+# 2nd job should be executed only if job1 is executed successfully
+# job2 has only 1 step - you can do here anything you want, e.g. echo "Good morning"
+# Commit the file and run the workflow, check if everything works
+
+name: Retro day 1 🚀
+
+on: 
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      myVar1:
+        type: boolean
+        description: Please check
+      myVar2:
+        type: string
+        description: Please add some text
+
+env:
+  VAR1: ${{inputs.myVar1}}
+  VAR2: ${{inputs.myVar2}}
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step1 of Job1
+        run: echo $VAR2
+        if: ${{env.VAR1}}
+      - name: Step2 of Job1
+        run: echo ${{ github.actor }}
+  job2:
+    runs-on: ubuntu-latest
+    needs: job1
+    steps:
+      - name: Say good morning
+        run: echo Good morning
+  
